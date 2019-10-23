@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_opencc/flutter_opencc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -16,6 +17,7 @@ void main() {
   });
 
   test('convert', () async {
+    WidgetsFlutterBinding.ensureInitialized();
     expect(await ChineseConverter.convert('1224', HK2S()), '42');
   });
 }

@@ -15,7 +15,7 @@ jobs:
           flutter-version: "1.9.x" # you can use 1.7
           channel: "dev" # optional, default to: 'stable'
       - run: flutter pub get
-      - run: flutter test
+      # - run: flutter test
       - run: |
           cd example
           flutter build apk --debug
