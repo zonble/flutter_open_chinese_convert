@@ -9,6 +9,14 @@ public class SwiftFlutterOpenccPlugin: NSObject, FlutterPlugin {
 		registrar.addMethodCallDelegate(instance, channel: channel)
 	}
 
+	lazy var bundle: Bundle? = {
+		let openCCBundle = Bundle(for: ChineseConverter.self)
+		guard let resourceUrl = openCCBundle.url(forResource: "OpenCCDictionary", withExtension: "bundle") else {
+			return nil
+		}
+		return Bundle(url: resourceUrl)
+	}()
+
 	func convertOption(from: String) -> ChineseConverter.Options {
 		let map: [String: ChineseConverter.Options] = [
 			"s2t": [.traditionalize],
@@ -27,6 +35,9 @@ public class SwiftFlutterOpenccPlugin: NSObject, FlutterPlugin {
 		let method = call.method
 		switch method {
 		case "convert":
+			guard let bundle = self.bundle else {
+				return
+			}
 			guard let list = call.arguments as? [String],
 				list.count >= 2 else {
 				return
@@ -34,7 +45,8 @@ public class SwiftFlutterOpenccPlugin: NSObject, FlutterPlugin {
 			let text = list[0]
 			let optionString = list[1]
 			do {
-				let converter = try ChineseConverter(option: convertOption(from: optionString))
+				let option = convertOption(from: optionString)
+				let converter = try ChineseConverter(bundle: bundle, option: option)
 				let converted = converter.convert(text)
 				result(converted)
 			} catch {
@@ -44,7 +56,6 @@ public class SwiftFlutterOpenccPlugin: NSObject, FlutterPlugin {
 		default:
 			let flutterError = FlutterError(code: "1", message: "Not supported", details: nil)
 			result(flutterError)
-
 		}
 	}
 }
