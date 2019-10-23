@@ -1,4 +1,4 @@
-group 'com.example.flutter_opencc'
+group 'net.zonble.flutter_opencc'
 version '1.0-SNAPSHOT'
 
 buildscript {
