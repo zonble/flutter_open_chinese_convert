@@ -1,14 +1,35 @@
 # flutter_opencc
 
-A new Flutter project.
+flutter_opencc bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your
+Flutter projects. You can use the package to convert Traditional Chinese to
+Simplified Chinese, and vise versa.
 
-## Getting Started
+The package supports various conversion options:
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+- S2T: Simplified Chinese to Traditional Chinese.
+- T2S: Traditional Chinese to Simplified Chinese.
+- S2HK: Simplified Chinese to Traditional Chinese (Hong Kong Standard).
+- HK2S: Traditional Chinese (Hong Kong Standard) to Simplified Chinese.
+- S2TW: Simplified Chinese to Traditional Chinese (Taiwan Standard).
+- TW2S: Traditional Chinese (Taiwan Standard) to Simplified Chinese.
+- S2TWp: Simplified Chinese to Traditional Chinese (Taiwan Standard) with Taiwanese idiom.
+- TW2Sp: Traditional Chinese (Taiwan Standard) to Simplified Chinese with Mainland Chinese idiom.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Usage
+
+All you need to do is to call `ChineseConverter.convert` with what you wan to
+convert and a conversion option. For exaple:
+
+``` dart
+import 'package:flutter_opencc/flutter_opencc.dart';
+
+var text = '鼠标里面的硅二极管坏了，导致光标分辨率降低。';
+var result = await ChineseConverter.convert(text, S2TWp());
+// 滑鼠裡面的矽二極體壞了，導致游標解析度降低。
+```
+
+For further information, please visit:
+
+- [OpenCC Project](https://github.com/BYVoid/OpenCC)
+- [SwiftyOpenCC](https://github.com/ddddxxx/SwiftyOpenCC)
+- [android-opencc](https://github.com/qichuan/android-opencc)

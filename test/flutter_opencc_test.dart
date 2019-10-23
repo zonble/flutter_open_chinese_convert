@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_opencc/flutter_opencc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -14,7 +15,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-//    expect(await FlutterOpencc.platformVersion, '42');
+  test('convert', () async {
+    expect(await ChineseConverter.convert('1224', HK2S()), '42');
   });
 }
