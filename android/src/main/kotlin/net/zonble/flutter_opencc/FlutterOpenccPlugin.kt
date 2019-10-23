@@ -38,17 +38,15 @@ class FlutterOpenccPlugin(var context: Context) : MethodCallHandler {
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
             "convert" -> {
-                val arguments = call.arguments
-                if (arguments is Array<*>) {
-                    val text = arguments[0] as String
-                    val optionString = arguments[1] as String
+                val arguments = call.arguments as? ArrayList<*>
+                arguments?.also {
+                    val text = it[0] as String
+                    val optionString = it[1] as String
                     val option = type(optionString)
                     option?.let {
                         val converted = ChineseConverter.convert(text, it, this.context)
                         result.success(converted)
                     } ?: result.error("Not supported", null, null)
-                } else {
-                    result.error("Not an array", null, null)
                 }
             }
             else -> result.notImplemented()

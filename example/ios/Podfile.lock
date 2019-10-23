@@ -10,7 +10,7 @@ DEPENDENCIES:
   - flutter_opencc (from `.symlinks/plugins/flutter_opencc/ios`)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - OpenCC
 
 EXTERNAL SOURCES:
