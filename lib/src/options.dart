@@ -37,7 +37,7 @@ class T2S implements ConverterOption {
 /// Simplified Chinese to Traditional Chinese (Hong Kong Standard).
 class S2HK implements ConverterOption {
   @override
-  String get chineseDescription => '簡體到香港繁體（香港小學學習字詞表標準';
+  String get chineseDescription => '簡體到香港繁體（香港小學學習字詞表標準）';
 
   @override
   String get englishDescription =>
