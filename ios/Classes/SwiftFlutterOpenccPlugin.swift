@@ -4,7 +4,7 @@ import OpenCC
 
 public class SwiftFlutterOpenccPlugin: NSObject, FlutterPlugin {
 	public static func register(with registrar: FlutterPluginRegistrar) {
-		let channel = FlutterMethodChannel(name: "flutter_opencc", binaryMessenger: registrar.messenger())
+		let channel = FlutterMethodChannel(name: "flutter_open_chinese_convert", binaryMessenger: registrar.messenger())
 		let instance = SwiftFlutterOpenccPlugin()
 		registrar.addMethodCallDelegate(instance, channel: channel)
 	}

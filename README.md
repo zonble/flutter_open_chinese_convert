@@ -1,8 +1,8 @@
-# flutter_opencc
+# flutter_open_chinese_convert
 
-flutter_opencc bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your
-Flutter projects. You can use the package to convert Traditional Chinese to
-Simplified Chinese, and vise versa.
+flutter_open_chinese_convert bridges OpenCC (開放中文轉換) to your Flutter
+projects. You can use the package to convert Traditional Chinese to Simplified
+Chinese, and vise versa.
 
 The package supports various conversion options:
 
@@ -21,7 +21,7 @@ All you need to do is to call `ChineseConverter.convert` with what you wan to
 convert and a conversion option. For exaple:
 
 ``` dart
-import 'package:flutter_opencc/flutter_opencc.dart';
+import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert.dart';
 
 var text = '鼠标里面的硅二极管坏了，导致光标分辨率降低。';
 var result = await ChineseConverter.convert(text, S2TWp());

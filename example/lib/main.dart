@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_opencc/flutter_opencc.dart';
+import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert.dart';
 
 void main() => runApp(MyApp());
 

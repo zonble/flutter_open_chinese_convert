@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_opencc/flutter_opencc.dart';
+import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('flutter_opencc');
+  const MethodChannel channel = MethodChannel('flutter_open_chinese_convert');
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {

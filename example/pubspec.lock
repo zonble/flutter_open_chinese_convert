@@ -41,7 +41,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_opencc:
+  flutter_open_chinese_convert:
     dependency: "direct dev"
     description:
       path: ".."

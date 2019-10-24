@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
-  s.name = "flutter_opencc"
+  s.name = "flutter_open_chinese_convert"
   s.version = "0.1.0"
-  s.summary = "flutter_opencc bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your Flutter projects."
+  s.summary = "flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your Flutter projects."
   s.description = <<-DESC
-flutter_opencc bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your
+flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your
 Flutter projects. You can use the package to convert Traditional Chinese to
 Simplified Chinese, and vise versa.
 
@@ -18,7 +18,7 @@ The package supports various conversion options:
 - S2TWp: Simplified Chinese to Traditional Chinese (Taiwan Standard) with Taiwanese idiom.
 - TW2Sp: Traditional Chinese (Taiwan Standard) to Simplified Chinese with Mainland Chinese idiom.
                        DESC
-  s.homepage = "https://github.com/zonble/flutter_opencc"
+  s.homepage = "https://github.com/zonble/flutter_open_chinese_convert"
   s.license = { :file => "../LICENSE" }
   s.author = { "Weizhong Yang a.k.a zonble" => "zonble@gmail.com" }
   s.source = { :path => "." }

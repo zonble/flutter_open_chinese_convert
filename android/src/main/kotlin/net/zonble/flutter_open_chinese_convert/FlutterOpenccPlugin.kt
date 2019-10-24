@@ -1,4 +1,4 @@
-package net.zonble.flutter_opencc
+package net.zonble.flutter_open_chinese_convert
 
 import android.content.Context
 import com.zqc.opencc.android.lib.ChineseConverter
@@ -14,7 +14,7 @@ class FlutterOpenccPlugin(var context: Context) : MethodCallHandler {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
       val context = registrar.activeContext()
-      val channel = MethodChannel(registrar.messenger(), "flutter_opencc")
+      val channel = MethodChannel(registrar.messenger(), "flutter_open_chinese_convert")
       channel.setMethodCallHandler(FlutterOpenccPlugin(context))
     }
   }

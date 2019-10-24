@@ -1,6 +1,6 @@
-# flutter_opencc_example
+# flutter_open_chinese_convert_example
 
-Demonstrates how to use the flutter_opencc plugin.
+Demonstrates how to use the flutter_open_chinese_convert plugin.
 
 ## Getting Started
 

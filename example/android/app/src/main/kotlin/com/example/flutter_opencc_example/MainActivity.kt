@@ -1,4 +1,4 @@
-package com.example.flutter_opencc_example
+package com.example.flutter_open_chinese_convert_example
 
 import android.os.Bundle
 

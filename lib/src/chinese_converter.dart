@@ -6,7 +6,8 @@ import 'options.dart';
 
 /// The Chinese converter.
 class ChineseConverter {
-  static const MethodChannel _channel = const MethodChannel('flutter_opencc');
+  static const MethodChannel _channel =
+      const MethodChannel('flutter_open_chinese_convert');
   static List<ConverterOption> _options = [
     S2T(),
     T2S(),

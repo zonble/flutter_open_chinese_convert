@@ -1,4 +1,4 @@
-group 'net.zonble.flutter_opencc'
+group 'net.zonble.flutter_open_chinese_convert'
 version '1.0-SNAPSHOT'
 
 buildscript {
