@@ -51,6 +51,7 @@ public class SwiftFlutterOpenccPlugin: NSObject, FlutterPlugin {
 					return
 			}
 			if inBackground {
+				convertInBackground(text: text, optionString: optionString, bundle: bundle, result: result)
 			} else {
 				convert(text: text, optionString: optionString, bundle: bundle, result: result)
 			}

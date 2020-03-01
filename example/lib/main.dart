@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert.dart';
+import 'package:twicon/twicon.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,31 +10,37 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int index = 0;
-  String original = '鼠标里面的硅二极管坏了，导致光标分辨率降低。\n滑鼠裡面的矽二極體壞了，導致游標解析度降低。';
-  String converted = '';
+  int _index = 0;
+  String _original = '鼠标里面的硅二极管坏了，导致光标分辨率降低。\n滑鼠裡面的矽二極體壞了，導致游標解析度降低。';
+  String _converted = '';
 
   @override
   void initState() {
     super.initState();
-    convert();
+    _convert();
   }
 
-  Future<void> convert() async {
-    var text = original;
-    var option = ChineseConverter.allOptions[index];
+  Future<void> _convert() async {
+    var text = _original;
+    var option = ChineseConverter.allOptions[_index];
     var result = await ChineseConverter.convert(
       text,
       option,
       inBackground: true,
     );
-    setState(() => converted = result);
+    setState(() => _converted = result);
   }
 
   @override
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
-          appBar: AppBar(title: const Text('Plugin example app')),
+          appBar: AppBar(
+              title: Row(
+            children: <Widget>[
+              Icon(TaiwanIcons.tapioca_milk_tea),
+              const Text('Open Chinese Convert'),
+            ],
+          )),
           body: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -48,7 +55,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(original),
+                  child: Text(_original),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -57,7 +64,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(converted ?? ''),
+                  child: Text(_converted ?? ''),
                 ),
               ],
             ),
@@ -71,13 +78,13 @@ class _MyAppState extends State<MyApp> {
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(ChineseConverter.allOptions[index].chineseDescription,
+          child: Text(ChineseConverter.allOptions[_index].chineseDescription,
               style: TextStyle(color: Theme.of(context).primaryColor)),
         ),
       ),
       onSelected: (i) {
-        index = i;
-        convert();
+        _index = i;
+        _convert();
       },
       itemBuilder: (context) => List.of(ChineseConverter.allOptions
           .asMap()
@@ -88,7 +95,7 @@ class _MyAppState extends State<MyApp> {
                   children: <Widget>[
                     Container(
                         width: 40,
-                        child: i == index ? Icon(Icons.check) : Container()),
+                        child: i == _index ? Icon(Icons.check) : Container()),
                     Expanded(
                         child: Text(x.chineseDescription,
                             style: TextStyle(fontSize: 12.0))),
