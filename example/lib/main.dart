@@ -22,80 +22,79 @@ class _MyAppState extends State<MyApp> {
   Future<void> convert() async {
     var text = original;
     var option = ChineseConverter.allOptions[index];
-    var result = await ChineseConverter.convert(text, option);
+    var result = await ChineseConverter.convert(
+      text,
+      option,
+      inBackground: true,
+    );
     setState(() => converted = result);
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PopupMenuButton<int>(
-                    elevation: 2,
-                    child: Text(
-                        ChineseConverter.allOptions[index].chineseDescription,
-                        style:
-                            TextStyle(color: Theme.of(context).primaryColor)),
-                    onSelected: (i) {
-                      index = i;
-                      convert();
-                    },
-                    itemBuilder: (context) =>
-                        List.of(ChineseConverter.allOptions
-                            .asMap()
-                            .map((i, x) => MapEntry(
-                                i,
-                                PopupMenuItem(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                          width: 40,
-                                          child: i == index
-                                              ? Icon(Icons.check)
-                                              : Container()),
-                                      Expanded(
-                                          child: Text(x.chineseDescription,
-                                              style:
-                                                  TextStyle(fontSize: 12.0))),
-                                    ],
-                                  ),
-                                  value: i,
-                                )))
-                            .values)),
-              ),
-              Divider(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child:
-                    Text('Original:', style: Theme.of(context).textTheme.title),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(original),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child:
-                    Text('Conveted:', style: Theme.of(context).textTheme.title),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(converted ?? ''),
-              ),
-            ],
+  Widget build(BuildContext context) => MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(title: const Text('Plugin example app')),
+          body: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                buildMenu(context),
+                Divider(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Original:',
+                      style: Theme.of(context).textTheme.title),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(original),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Conveted:',
+                      style: Theme.of(context).textTheme.title),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(converted ?? ''),
+                ),
+              ],
+            ),
           ),
         ),
+      );
+
+  Widget buildMenu(BuildContext context) => PopupMenuButton<int>(
+      elevation: 2,
+      child: Container(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(ChineseConverter.allOptions[index].chineseDescription,
+              style: TextStyle(color: Theme.of(context).primaryColor)),
+        ),
       ),
-    );
-  }
+      onSelected: (i) {
+        index = i;
+        convert();
+      },
+      itemBuilder: (context) => List.of(ChineseConverter.allOptions
+          .asMap()
+          .map((i, x) => MapEntry(
+              i,
+              PopupMenuItem(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                        width: 40,
+                        child: i == index ? Icon(Icons.check) : Container()),
+                    Expanded(
+                        child: Text(x.chineseDescription,
+                            style: TextStyle(fontSize: 12.0))),
+                  ],
+                ),
+                value: i,
+              )))
+          .values));
 }
