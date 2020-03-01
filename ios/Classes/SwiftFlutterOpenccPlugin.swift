@@ -36,26 +36,58 @@ public class SwiftFlutterOpenccPlugin: NSObject, FlutterPlugin {
 		switch method {
 		case "convert":
 			guard let bundle = self.bundle else {
-				return
-			}
-			guard let list = call.arguments as? [String],
-				list.count >= 2 else {
-				return
-			}
-			let text = list[0]
-			let optionString = list[1]
-			do {
-				let option = convertOption(from: optionString)
-				let converter = try ChineseConverter(bundle: bundle, option: option)
-				let converted = converter.convert(text)
-				result(converted)
-			} catch {
-				let flutterError = FlutterError(code: "0", message: error.localizedDescription, details: nil)
+				let flutterError = FlutterError(code: "NO_BUNDLE", message: "The bundle for the plugin does not exist.", details: nil)
 				result(flutterError)
+				return
 			}
+			guard let list = call.arguments as? [Any],
+				list.count >= 3,
+				let text = list[0] as? String,
+				let optionString = list[1] as? String,
+				let inBackground = list[2] as? Bool
+				else {
+					let flutterError = FlutterError(code: "MISSING_PARAMETER", message: "Required parameters are missing", details: nil)
+					result(flutterError)
+					return
+			}
+			if inBackground {
+			} else {
+				convert(text: text, optionString: optionString, bundle: bundle, result: result)
+			}
+
 		default:
 			let flutterError = FlutterError(code: "1", message: "Not supported", details: nil)
 			result(flutterError)
+		}
+	}
+
+	func convert(text: String, optionString: String, bundle: Bundle, result: @escaping FlutterResult) {
+		do {
+			let option = convertOption(from: optionString)
+			let converter = try ChineseConverter(bundle: bundle, option: option)
+			let converted = converter.convert(text)
+			result(converted)
+		} catch {
+			let flutterError = FlutterError(code: "0", message: error.localizedDescription, details: nil)
+			result(flutterError)
+		}
+	}
+
+	func convertInBackground(text: String, optionString: String, bundle: Bundle, result: @escaping FlutterResult) {
+		DispatchQueue.global().async {
+			do {
+				let option = self.convertOption(from: optionString)
+				let converter = try ChineseConverter(bundle: bundle, option: option)
+				let converted = converter.convert(text)
+				DispatchQueue.main.async {
+					result(converted)
+				}
+			} catch {
+				let flutterError = FlutterError(code: "0", message: error.localizedDescription, details: nil)
+				DispatchQueue.main.async {
+					result(flutterError)
+				}
+			}
 		}
 	}
 }

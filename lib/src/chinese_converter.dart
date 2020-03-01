@@ -23,9 +23,23 @@ class ChineseConverter {
   static List<ConverterOption> get allOptions => _options;
 
   /// Converter input [text] with a given [option].
-  static Future<String> convert(String text, ConverterOption option) async {
+  ///
+  /// For example:
+  ///
+  /// ``` dart
+  /// var text = '鼠标里面的硅二极管坏了，导致光标分辨率降低。';
+  /// var result = await ChineseConverter.convert(text, S2TWp());
+  /// ```
+  ///
+  /// You can pass the [inBackground] parameter if you want to create native
+  /// threads while doing text conversion.
+  static Future<String> convert(
+    String text,
+    ConverterOption option, {
+    bool inBackground = false,
+  }) async {
     final String result =
-        await _channel.invokeMethod('convert', [text, option.id]);
+        await _channel.invokeMethod('convert', [text, option.id, inBackground]);
     return result;
   }
 }
