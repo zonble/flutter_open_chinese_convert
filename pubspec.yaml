@@ -1,6 +1,6 @@
 name: flutter_open_chinese_convert
 description: flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your Flutter projects.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/zonble/flutter_open_chinese_convert
 
 environment:
@@ -17,5 +17,9 @@ dev_dependencies:
 
 flutter:
   plugin:
-    androidPackage: net.zonble.flutter_open_chinese_convert
-    pluginClass: FlutterOpenccPlugin
+    platforms:
+      android:
+        package: net.zonble.flutter_open_chinese_convert
+        pluginClass: FlutterOpenccPlugin
+      ios:
+        pluginClass: FlutterOpenccPlugin
