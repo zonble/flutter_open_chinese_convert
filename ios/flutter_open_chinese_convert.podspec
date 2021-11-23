@@ -22,7 +22,7 @@ The package supports various conversion options:
   s.license = { :file => "../LICENSE" }
   s.author = { "Weizhong Yang a.k.a zonble" => "zonble@gmail.com" }
   s.source = { :path => "." }
-  s.swift_versions = ['4.0', '4.2', '5.0', '5.1']
+  s.swift_versions = ['4.0', '4.2', '5.0', '5.1', "5.5"]
   s.source_files = "Classes/**/*"
   s.public_header_files = "Classes/**/*.h"
   s.dependency "Flutter"
