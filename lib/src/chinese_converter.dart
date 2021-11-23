@@ -8,7 +8,7 @@ import 'options.dart';
 class ChineseConverter {
   static const MethodChannel _channel =
       MethodChannel('flutter_open_chinese_convert');
-  static List<ConverterOption> _options = [
+  static final List<ConverterOption> _options = [
     S2T(),
     T2S(),
     S2HK(),
