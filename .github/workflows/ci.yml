@@ -34,4 +34,4 @@ jobs:
         if: startsWith(matrix.os, 'macOS')
         run: |
           cd example
-          flutter build ios --debug
+          flutter build ios --debug --no-codesign

@@ -11,7 +11,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 
-class FlutterOpenccPlugin(val context: Context) : MethodCallHandler {
+class FlutterOpenccPlugin(val context: Context) : FlutterPlugin {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
