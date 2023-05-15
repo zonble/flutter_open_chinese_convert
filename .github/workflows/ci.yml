@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: "temurin"
-          java-version: "12.x"
+          java-version: "20.0.1+9"
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.10.x" # you can use 1.7
