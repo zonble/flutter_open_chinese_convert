@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "flutter_open_chinese_convert"
-  s.version = "0.1.0"
+  s.version = "0.3.0"
   s.summary = "flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your Flutter projects."
   s.description = <<-DESC
 flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your
@@ -31,5 +31,5 @@ The package supports various conversion options:
     "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/OpenCC/SwiftOpenCC/Sources/OpenCCBridge/include",
     "OTHER_CFLAGS" => "-fembed-bitcode",
   }
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "11.0"
 end
