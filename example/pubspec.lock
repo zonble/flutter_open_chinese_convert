@@ -183,14 +183,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.16"
-  twicon:
-    dependency: "direct main"
-    description:
-      name: twicon
-      sha256: dd5a9145507fffbba482e5076fe70374d3f8d7ca939400aada9e136d57f132de
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.1+1"
   vector_math:
     dependency: transitive
     description:

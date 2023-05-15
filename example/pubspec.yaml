@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.5
-  twicon:
   flutter_open_chinese_convert:
     path: ../
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert.dart';
-import 'package:twicon/twicon.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,7 +38,6 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
               title: Row(
             children: const <Widget>[
-              Icon(TaiwanIcons.tapioca_milk_tea),
               Text('Open Chinese Convert'),
             ],
           )),
