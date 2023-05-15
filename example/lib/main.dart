@@ -5,14 +5,16 @@ import 'package:twicon/twicon.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  int _index = 0;
-  String _original = '鼠标里面的硅二极管坏了，导致光标分辨率降低。\n滑鼠裡面的矽二極體壞了，導致游標解析度降低。';
-  String _converted = '';
+  var _index = 0;
+  final _original = '鼠标里面的硅二极管坏了，导致光标分辨率降低。\n滑鼠裡面的矽二極體壞了，導致游標解析度降低。';
+  var _converted = '';
 
   @override
   void initState() {
@@ -36,9 +38,9 @@ class _MyAppState extends State<MyApp> {
         home: Scaffold(
           appBar: AppBar(
               title: Row(
-            children: <Widget>[
+            children: const <Widget>[
               Icon(TaiwanIcons.tapioca_milk_tea),
-              const Text('Open Chinese Convert'),
+              Text('Open Chinese Convert'),
             ],
           )),
           body: SafeArea(
@@ -47,7 +49,7 @@ class _MyAppState extends State<MyApp> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 buildMenu(context),
-                Divider(),
+                const Divider(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text('Original:',
@@ -74,7 +76,7 @@ class _MyAppState extends State<MyApp> {
 
   Widget buildMenu(BuildContext context) => PopupMenuButton<int>(
       elevation: 2,
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -93,12 +95,14 @@ class _MyAppState extends State<MyApp> {
               PopupMenuItem(
                 child: Row(
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                         width: 40,
-                        child: i == _index ? Icon(Icons.check) : Container()),
+                        child: i == _index
+                            ? const Icon(Icons.check)
+                            : Container()),
                     Expanded(
                         child: Text(x.chineseDescription,
-                            style: TextStyle(fontSize: 12.0))),
+                            style: const TextStyle(fontSize: 12.0))),
                   ],
                 ),
                 value: i,
