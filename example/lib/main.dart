@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text('Original:',
-                      style: Theme.of(context).textTheme.headline5),
+                      style: Theme.of(context).textTheme.headlineLarge),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text('Conveted:',
-                      style: Theme.of(context).textTheme.headline5),
+                      style: Theme.of(context).textTheme.headlineLarge),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
