@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "flutter_open_chinese_convert"
-  s.version = "0.3.0"
+  s.version = "0.3.3"
   s.summary = "flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert, 開放中文轉換) to your Flutter projects."
   s.description = <<-DESC
 flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert) to your
