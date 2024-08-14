@@ -34,5 +34,6 @@ jobs:
       - name: Build iOS
         if: startsWith(matrix.os, 'macOS')
         run: |
+          pod update
           cd example
           flutter build ios --debug --no-codesign

@@ -31,5 +31,5 @@ The package supports various conversion options:
     "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/OpenCC/SwiftOpenCC/Sources/OpenCCBridge/include",
     "OTHER_CFLAGS" => "-fembed-bitcode",
   }
-  s.ios.deployment_target = "11.0"
+  s.ios.deployment_target = "12.0"
 end
