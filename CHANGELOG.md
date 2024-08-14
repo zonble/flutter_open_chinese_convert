@@ -1,3 +1,7 @@
+## 0.3.3
+
+- Supports Flutter 3.24.x.
+
 ## 0.3.0
 
 - Supports Flutter 3.10.x.
