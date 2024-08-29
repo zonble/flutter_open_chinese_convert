@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -36,8 +36,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-              title: Row(
-            children: const <Widget>[
+              title: const Row(
+            children: <Widget>[
               Text('Open Chinese Convert'),
             ],
           )),
@@ -91,6 +91,7 @@ class _MyAppState extends State<MyApp> {
           .map((i, x) => MapEntry(
               i,
               PopupMenuItem(
+                value: i,
                 child: Row(
                   children: <Widget>[
                     SizedBox(
@@ -103,7 +104,6 @@ class _MyAppState extends State<MyApp> {
                             style: const TextStyle(fontSize: 12.0))),
                   ],
                 ),
-                value: i,
               )))
           .values));
 }
