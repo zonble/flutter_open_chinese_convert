@@ -11,11 +11,15 @@ let package = Package(
     products: [
         .library(name: "flutter-open-chinese-convert", targets: ["flutter_open_chinese_convert"])
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/ddddxxx/SwiftyOpenCC", revision: "1d8105a0f7199c90af722bff62728050c858e777")
+    ],
     targets: [
         .target(
             name: "flutter_open_chinese_convert",
-            dependencies: [],
+            dependencies: [
+                .product(name: "OpenCC", package: "SwiftyOpenCC")
+            ],
             resources: [
                 // If your plugin requires a privacy manifest, for example if it uses any required
                 // reason APIs, update the PrivacyInfo.xcprivacy file to describe your plugin's

@@ -22,17 +22,17 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
     }()
 
     func convertOption(from: String) -> ChineseConverter.Options {
-        let map: [String: ChineseConverter.Options] = [
-            "s2t": [.traditionalize],
-            "t2s": [.simplify],
-            "s2hk": [.traditionalize, .HKStandard],
-            "hk2s": [.simplify, .HKStandard],
-            "s2tw": [.traditionalize, .TWStandard],
-            "tw2s": [.simplify, .TWStandard],
-            "s2twp": [.traditionalize, .TWStandard, .TWIdiom],
-            "tw2sp": [.simplify, .TWStandard, .TWIdiom],
-        ]
-        return map[from] ?? []
+        switch from {
+        case "s2t": [.traditionalize]
+        case "t2s": [.simplify]
+        case "s2hk": [.traditionalize, .HKStandard]
+        case "hk2s": [.simplify, .HKStandard]
+        case "s2tw": [.traditionalize, .TWStandard]
+        case "tw2s": [.simplify, .TWStandard]
+        case "s2twp": [.traditionalize, .TWStandard, .TWIdiom]
+        case "tw2sp": [.simplify, .TWStandard, .TWIdiom]
+        default: []
+        }
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -64,7 +64,6 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
             } else {
                 convert(text: text, optionString: optionString, bundle: bundle, result: result)
             }
-
         default:
             let flutterError = FlutterError(code: "1", message: "Not supported", details: nil)
             result(flutterError)
