@@ -9,3 +9,6 @@ build/
 
 # FVM Version Cache
 .fvm/
+*.bak
+.build
+.swiftpm

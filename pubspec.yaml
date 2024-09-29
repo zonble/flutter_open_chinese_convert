@@ -21,7 +21,7 @@ flutter:
         package: "net.zonble.flutter_open_chinese_convert"
         pluginClass: FlutterOpenccPlugin
       ios:
-        pluginClass: FlutterOpenccPlugin
+        pluginClass: FlutterOpenChineseConvertPlugin
 import_sorter:
   emojis: false
   comments: false
