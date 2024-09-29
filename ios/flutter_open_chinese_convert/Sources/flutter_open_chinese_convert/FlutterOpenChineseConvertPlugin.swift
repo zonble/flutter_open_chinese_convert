@@ -21,8 +21,8 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
         return Bundle(url: resourceUrl)
     }()
 
-    func convertOption(from: String) -> ChineseConverter.Options {
-        switch from {
+    func convertOptions(from: String) -> ChineseConverter.Options {
+        return switch from {
         case "s2t": [.traditionalize]
         case "t2s": [.simplify]
         case "s2hk": [.traditionalize, .hkStandard]
@@ -74,8 +74,8 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
         text: String, optionString: String, bundle: Bundle, result: @escaping FlutterResult
     ) {
         do {
-            let option = convertOption(from: optionString)
-            let converter = try ChineseConverter(bundle: bundle, option: option)
+            let options = convertOptions(from: optionString)
+            let converter = try ChineseConverter(options: options)
             let converted = converter.convert(text)
             result(converted)
         } catch {
@@ -90,8 +90,8 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
     ) {
         DispatchQueue.global().async {
             do {
-                let option = self.convertOption(from: optionString)
-                let converter = try ChineseConverter(bundle: bundle, option: option)
+                let options = self.convertOptions(from: optionString)
+                let converter = try ChineseConverter(options: options)
                 let converted = converter.convert(text)
                 DispatchQueue.main.async {
                     result(converted)
