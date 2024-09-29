@@ -25,12 +25,12 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
         switch from {
         case "s2t": [.traditionalize]
         case "t2s": [.simplify]
-        case "s2hk": [.traditionalize, .hkStandard]
-        case "hk2s": [.simplify, .hkStandard]
-        case "s2tw": [.traditionalize, .twStandard]
-        case "tw2s": [.simplify, .twStandard]
-        case "s2twp": [.traditionalize, .twStandard, .twIdiom]
-        case "tw2sp": [.simplify, .twStandard, .twIdiom]
+        case "s2hk": [.traditionalize, .HKStandard]
+        case "hk2s": [.simplify, .HKStandard]
+        case "s2tw": [.traditionalize, .TWStandard]
+        case "tw2s": [.simplify, .TWStandard]
+        case "s2twp": [.traditionalize, .TWStandard, .TWIdiom]
+        case "tw2sp": [.simplify, .TWStandard, .TWIdiom]
         default: []
         }
     }

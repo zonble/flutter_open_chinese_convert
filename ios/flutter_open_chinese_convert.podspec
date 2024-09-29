@@ -26,7 +26,7 @@ The package supports various conversion options:
   s.license = { :file => "../LICENSE" }
   s.author = { "Weizhong Yang a.k.a zonble" => "zonble@gmail.com" }
   s.source           = { :path => '.' }
-  s.source_files = 'flutter_open_chinese_convert/Sources/flutter_open_chinese_convert/**/*'
+  s.source_files = 'legacy/**/*'
   s.dependency "Flutter"
   s.dependency "OpenCC"
   s.xcconfig = {
