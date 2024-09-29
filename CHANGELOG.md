@@ -1,3 +1,7 @@
+## 0.5.0
+
+- SPM ready
+
 ## 0.4.0
 
 - Fix the build for the latest iOS and Android versions.
