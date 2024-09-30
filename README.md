@@ -1,5 +1,9 @@
 # flutter_open_chinese_convert
 
+[![pub package](https://img.shields.io/pub/v/flutter_open_chinese_convert.svg)](https://pub.dev/packages/flutter_open_chinese_convert)
+[![Build](https://github.com/zonble/flutter_open_chinese_convert/actions/workflows/ci.yml/badge.svg)](https://github.com/zonble/flutter_open_chinese_convert/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/zonble/flutter_open_chinese_convert/blob/main/LICENSE)
+
 flutter_open_chinese_convert bridges OpenCC (開放中文轉換) to your Flutter
 projects. You can use the package to convert Traditional Chinese to Simplified
 Chinese, and vise versa.
