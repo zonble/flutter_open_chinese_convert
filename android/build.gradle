@@ -28,6 +28,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace "net.zonble.flutter_open_chinese_convert"
+    testNamespace "net.zonble.flutter_open_chinese_convert"
     compileSdkVersion 31
 
     sourceSets {

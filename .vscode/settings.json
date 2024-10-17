@@ -4,5 +4,5 @@
     "strings": "off",
     "other": "off"
   },
-  "dart.flutterSdkPath": ".fvm/versions/3.26.0-1.0.pre.193"
+  "dart.flutterSdkPath": ".fvm/versions/3.24.3"
 }
