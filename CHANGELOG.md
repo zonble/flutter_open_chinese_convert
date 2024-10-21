@@ -1,3 +1,7 @@
+## 0.5.1
+
+- Adds a name space for gradle 8.
+
 ## 0.5.0
 
 - SPM ready
