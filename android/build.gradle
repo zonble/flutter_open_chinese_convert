@@ -2,7 +2,7 @@ group 'net.zonble.flutter_open_chinese_convert'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.8.0'
+    ext.kotlin_version = '1.8.10'
     repositories {
         google()
         jcenter()
@@ -29,7 +29,7 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace "net.zonble.flutter_open_chinese_convert"
-    testNamespace "net.zonble.flutter_open_chinese_convert"
+    testNamespace "net.zonble.flutter_open_chinese_convert_test"
     compileSdkVersion 31
 
     compileOptions {
