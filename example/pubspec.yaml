@@ -4,12 +4,12 @@ publish_to: "none"
 version: 0.0.1+1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.5
+  cupertino_icons: ^1.0.8
   flutter_open_chinese_convert:
     path: ../
 

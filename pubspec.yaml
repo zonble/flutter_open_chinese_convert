@@ -2,7 +2,7 @@ name: "flutter_open_chinese_convert"
 version: 0.5.1
 homepage: "https://github.com/zonble/flutter_open_chinese_convert"
 environment:
-  sdk: ">=2.17.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
   flutter: ">=3.10.0"
 description: "flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert) to your Flutter projects."
 dependencies:
