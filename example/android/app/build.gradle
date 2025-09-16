@@ -29,7 +29,7 @@ android {
     namespace "com.example.example"
     testNamespace "com.example.example"
 
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 35
     ndkVersion flutter.ndkVersion
 
     compileOptions {
