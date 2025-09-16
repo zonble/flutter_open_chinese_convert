@@ -1,3 +1,2 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="net.zonble.flutter_open_chinese_convert">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="net.zonble.flutter_open_chinese_convert">
 </manifest>

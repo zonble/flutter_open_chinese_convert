@@ -66,6 +66,7 @@ class FlutterOpenccPlugin : FlutterPlugin, MethodCallHandler {
                     } ?: result.error("Not supported", null, null)
                 }
             }
+
             else -> result.notImplemented()
         }
     }
