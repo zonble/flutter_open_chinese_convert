@@ -9,8 +9,8 @@ jobs:
       matrix:
         os: [macOS-latest, ubuntu-latest]
         version: 
-          - "3.22.x"
           - "3.24.x"
+          - "3.29.x"
           - "3.32.x"
           - "3.35.x"
         include:
