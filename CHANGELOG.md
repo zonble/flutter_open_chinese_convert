@@ -1,6 +1,4 @@
-# Changelog
-
-## 0.6.0
+## 0.7.0
 
 - **BREAKING**: Updates minimum Flutter version requirement to 3.24.0.
 - **BREAKING**: Sets minimum Android SDK version to 24 (Android 7.0).
@@ -11,6 +9,10 @@
 - Updates flutter_lints from 5.0.0 to 6.0.0 for better code quality.
 - Optimizes CI/CD pipeline by reducing Python version testing overhead.
 - Improves dependency management and build processes.
+
+## 0.6.0
+
+- Supports Flutter 3.32.x.
 
 ## 0.5.1
 
