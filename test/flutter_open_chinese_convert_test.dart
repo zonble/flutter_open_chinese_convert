@@ -7,21 +7,24 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockFlutterOpenChineseConvertPlatform
     with MockPlatformInterfaceMixin
     implements FlutterOpenChineseConvertPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final FlutterOpenChineseConvertPlatform initialPlatform = FlutterOpenChineseConvertPlatform.instance;
+  final FlutterOpenChineseConvertPlatform initialPlatform =
+      FlutterOpenChineseConvertPlatform.instance;
 
   test('$MethodChannelFlutterOpenChineseConvert is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelFlutterOpenChineseConvert>());
+    expect(initialPlatform,
+        isInstanceOf<MethodChannelFlutterOpenChineseConvert>());
   });
 
   test('getPlatformVersion', () async {
-    FlutterOpenChineseConvert flutterOpenChineseConvertPlugin = FlutterOpenChineseConvert();
-    MockFlutterOpenChineseConvertPlatform fakePlatform = MockFlutterOpenChineseConvertPlatform();
+    FlutterOpenChineseConvert flutterOpenChineseConvertPlugin =
+        FlutterOpenChineseConvert();
+    MockFlutterOpenChineseConvertPlatform fakePlatform =
+        MockFlutterOpenChineseConvertPlatform();
     FlutterOpenChineseConvertPlatform.instance = fakePlatform;
 
     expect(await flutterOpenChineseConvertPlugin.getPlatformVersion(), '42');

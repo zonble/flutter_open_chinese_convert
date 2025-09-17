@@ -4,7 +4,7 @@ import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();

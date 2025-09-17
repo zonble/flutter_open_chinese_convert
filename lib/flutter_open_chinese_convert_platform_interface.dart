@@ -8,7 +8,8 @@ abstract class FlutterOpenChineseConvertPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static FlutterOpenChineseConvertPlatform _instance = MethodChannelFlutterOpenChineseConvert();
+  static FlutterOpenChineseConvertPlatform _instance =
+      MethodChannelFlutterOpenChineseConvert();
 
   /// The default instance of [FlutterOpenChineseConvertPlatform] to use.
   ///

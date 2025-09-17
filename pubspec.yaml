@@ -8,12 +8,14 @@ description: "flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert)
 dependencies:
   flutter:
     sdk: flutter
+  plugin_platform_interface: any
 dev_dependencies:
   flutter_lints: any
   flutter_test:
     sdk: flutter
   import_sorter: "^4.6.0"
   pubspec_dependency_sorter: "^1.0.4"
+  plugin_platform_interface: any
 flutter:
   plugin:
     platforms:
