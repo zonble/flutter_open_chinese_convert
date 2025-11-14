@@ -13,6 +13,7 @@ jobs:
           - "3.29.x"
           - "3.32.x"
           - "3.35.x"
+          - "3.38.x"
         include:
           - os: macOS-latest
             TARGET: macos

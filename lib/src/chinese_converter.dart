@@ -6,8 +6,9 @@ import 'options.dart';
 
 /// The Chinese converter.
 class ChineseConverter {
-  static const MethodChannel _channel =
-      MethodChannel('flutter_open_chinese_convert');
+  static const MethodChannel _channel = MethodChannel(
+    'flutter_open_chinese_convert',
+  );
   static final List<ConverterOption> _options = [
     S2T(),
     T2S(),
@@ -38,8 +39,11 @@ class ChineseConverter {
     ConverterOption option, {
     bool inBackground = false,
   }) async {
-    final String result =
-        await _channel.invokeMethod('convert', [text, option.id, inBackground]);
+    final String result = await _channel.invokeMethod('convert', [
+      text,
+      option.id,
+      inBackground,
+    ]);
     return result;
   }
 }

@@ -36,11 +36,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-              title: const Row(
-            children: <Widget>[
-              Text('Open Chinese Convert'),
-            ],
-          )),
+            title: const Row(children: <Widget>[Text('Open Chinese Convert')]),
+          ),
           body: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -50,17 +47,19 @@ class _MyAppState extends State<MyApp> {
                 const Divider(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text('Original:',
-                      style: Theme.of(context).textTheme.headlineLarge),
+                  child: Text(
+                    'Original:',
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(_original),
-                ),
+                    padding: const EdgeInsets.all(8.0), child: Text(_original)),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text('Conveted:',
-                      style: Theme.of(context).textTheme.headlineLarge),
+                  child: Text(
+                    'Conveted:',
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -73,37 +72,49 @@ class _MyAppState extends State<MyApp> {
       );
 
   Widget buildMenu(BuildContext context) => PopupMenuButton<int>(
-      elevation: 2,
-      child: SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(ChineseConverter.allOptions[_index].chineseDescription,
-              style: TextStyle(color: Theme.of(context).primaryColor)),
+        elevation: 2,
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              ChineseConverter.allOptions[_index].chineseDescription,
+              style: TextStyle(color: Theme.of(context).primaryColor),
+            ),
+          ),
         ),
-      ),
-      onSelected: (i) {
-        _index = i;
-        _convert();
-      },
-      itemBuilder: (context) => List.of(ChineseConverter.allOptions
-          .asMap()
-          .map((i, x) => MapEntry(
-              i,
-              PopupMenuItem(
-                value: i,
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                        width: 40,
-                        child: i == _index
-                            ? const Icon(Icons.check)
-                            : Container()),
-                    Expanded(
-                        child: Text(x.chineseDescription,
-                            style: const TextStyle(fontSize: 12.0))),
-                  ],
+        onSelected: (i) {
+          _index = i;
+          _convert();
+        },
+        itemBuilder: (context) => List.of(
+          ChineseConverter.allOptions
+              .asMap()
+              .map(
+                (i, x) => MapEntry(
+                  i,
+                  PopupMenuItem(
+                    value: i,
+                    child: Row(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 40,
+                          child: i == _index
+                              ? const Icon(Icons.check)
+                              : Container(),
+                        ),
+                        Expanded(
+                          child: Text(
+                            x.chineseDescription,
+                            style: const TextStyle(fontSize: 12.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              )))
-          .values));
+              )
+              .values,
+        ),
+      );
 }

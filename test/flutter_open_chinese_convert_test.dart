@@ -16,8 +16,10 @@ void main() {
       FlutterOpenChineseConvertPlatform.instance;
 
   test('$MethodChannelFlutterOpenChineseConvert is the default instance', () {
-    expect(initialPlatform,
-        isInstanceOf<MethodChannelFlutterOpenChineseConvert>());
+    expect(
+      initialPlatform,
+      isInstanceOf<MethodChannelFlutterOpenChineseConvert>(),
+    );
   });
 
   test('getPlatformVersion', () async {
