@@ -1,5 +1,5 @@
 enum OptionPair{
-  s2t(from: 'cn', to: 't'),
+  s2t(from:'cn', to:'t'),
   t2s(from:'t', to:'cn'),
   s2hk(from:'cn',to:'hk'),
   hk2s(from:'hk', to:'cn'),
