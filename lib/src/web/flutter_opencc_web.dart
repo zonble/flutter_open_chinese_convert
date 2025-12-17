@@ -41,11 +41,11 @@ class FlutterOpenccWeb extends FlutterOpenChineseConvertPlatform {
       "to":  options.to,
       "from": options.from
     }.jsify());
-    String result = await converterInstance.callAsFunction(
-        null.jsify(),
-        text.jsify())
-        .dartify() as String;
-    return result;
+    JSAny? result = converterInstance.callAsFunction(
+        null,
+        text.toJS
+    );
+    return (result as JSString).toDart;
   }
 
   Future<void> loadLibrary() async {
