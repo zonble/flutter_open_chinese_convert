@@ -1,13 +1,20 @@
+@JS('OpenCC')
+library flutter_open_chinese_convert;
+
 import 'dart:async';
 import 'dart:js_interop';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert.dart';
 import 'package:flutter_open_chinese_convert/flutter_open_chinese_convert_platform_interface.dart';
-import 'package:web/web.dart';
+import 'package:flutter_open_chinese_convert/src/web/option_pair.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:web/web.dart';
+
+@JS()
+external JSFunction Converter(JSAny? options);
 
 class FlutterOpenccWeb extends FlutterOpenChineseConvertPlatform {
+
   FlutterOpenccWeb();
 
   static void registerWith(Registrar registrar) {
@@ -21,13 +28,53 @@ class FlutterOpenccWeb extends FlutterOpenChineseConvertPlatform {
     switch (call.method) {
       case 'convert':
         return _convert(
-          call.arguments["text"],
-          call.arguments["option"]
+          call.arguments[0], //text
+          call.arguments[1] //option
         );
     }
   }
 
-  Future<String> _convert(String text, ConverterOption option) async {
-    return text;
+  Future<String> _convert(String text, String option) async {
+    await loadLibrary();
+    OptionPair options = OptionPair.optionMap[option]!;
+    JSFunction converterInstance = Converter({
+      "to":  options.to,
+      "from": options.from
+    }.jsify());
+    String result = await converterInstance.callAsFunction(
+        null.jsify(),
+        text.jsify())
+        .dartify() as String;
+    return result;
   }
+
+  Future<void> loadLibrary() async {
+    final String scriptId = 'flutter-open-chinese-convert';
+    if(document.querySelector('script#$scriptId') != null) {
+      return;
+    }
+
+    final scriptUrl = "https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.js";
+    final completer = Completer<void>();
+
+    final script =
+    HTMLScriptElement()
+      ..id = scriptId
+      ..async = true
+      ..defer = false
+      ..type = 'application/javascript'
+      ..lang = 'javascript'
+      ..crossOrigin = 'anonymous'
+      ..src = scriptUrl
+      ..onload =
+              (JSAny _) {
+            if (!completer.isCompleted) {
+              completer.complete();
+            }
+          }.toJS;
+
+    document.head!.appendChild(script);
+    await completer.future;
+  }
+
 }
