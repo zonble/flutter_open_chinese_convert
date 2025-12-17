@@ -39,16 +39,12 @@ class FlutterOpenccWeb extends FlutterOpenChineseConvertPlatform {
     OptionPair options;
     await loadLibrary();
 
-    try{
-      options = OptionPair.optionMap[option]!;
-    } catch (e){
-      if(option == 'tw2sp'){
-        ignoreSp ? options = OptionPair.tw2s : throw UnimplementedError(
+    if (option == 'tw2sp'){
+      ignoreSp ? options = OptionPair.tw2s : throw UnimplementedError(
           "Simplified idioms are not supported by OpenCC-JS. Set webIgnoreMissingIdioms when calling convert() to suppress this error."
-        );
-      } else {
-        rethrow;
-      }
+      );
+    } else {
+      options = OptionPair.optionMap[option]!;
     }
 
     JSFunction converterInstance = Converter({
@@ -77,7 +73,6 @@ class FlutterOpenccWeb extends FlutterOpenChineseConvertPlatform {
       ..async = true
       ..defer = false
       ..type = 'application/javascript'
-      ..lang = 'javascript'
       ..crossOrigin = 'anonymous'
       ..src = scriptUrl
       ..onload =
