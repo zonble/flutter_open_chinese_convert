@@ -60,30 +60,33 @@ class FlutterOpenccWeb extends FlutterOpenChineseConvertPlatform {
 
   Future<void> loadLibrary() async {
     final String scriptId = 'flutter-open-chinese-convert';
-    if(document.querySelector('script#$scriptId') != null) {
+    if (document.querySelector('script#$scriptId') != null) {
       return;
     }
 
     final scriptUrl = "https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.js";
     final completer = Completer<void>();
 
-    final script =
-    HTMLScriptElement()
+    final script = HTMLScriptElement()
       ..id = scriptId
       ..async = true
       ..defer = false
       ..type = 'application/javascript'
       ..crossOrigin = 'anonymous'
       ..src = scriptUrl
-      ..onload =
-              (JSAny _) {
-            if (!completer.isCompleted) {
-              completer.complete();
-            }
-          }.toJS;
+      ..onload = (JSAny _) {
+        if (!completer.isCompleted) {
+          completer.complete();
+        }
+      }.toJS
+      ..onerror = (JSAny error) {
+        if (!completer.isCompleted) {
+          completer.completeError(
+              Exception('Failed to load OpenCC-JS library from CDN: $error'));
+        }
+      }.toJS;
 
     document.head!.appendChild(script);
     await completer.future;
   }
-
 }
