@@ -8,7 +8,10 @@ description: "flutter_open_chinese_convert bridges OpenCC (Open Chinese Convert)
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   plugin_platform_interface: any
+  web: any
 dev_dependencies:
   flutter_lints: any
   flutter_test:
@@ -24,6 +27,9 @@ flutter:
         pluginClass: FlutterOpenccPlugin
       ios:
         pluginClass: FlutterOpenChineseConvertPlugin
+      web:
+        pluginClass: FlutterOpenccWeb
+        fileName: src/web/flutter_opencc_web.dart
 import_sorter:
   emojis: false
   comments: false
