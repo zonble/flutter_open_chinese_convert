@@ -11,7 +11,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:web/web.dart';
 
 @JS()
-external JSFunction Converter(JSAny? options);
+external JSFunction Converter(JSAny options);
 
 class FlutterOpenccWeb extends FlutterOpenChineseConvertPlatform {
 
@@ -50,7 +50,7 @@ class FlutterOpenccWeb extends FlutterOpenChineseConvertPlatform {
     JSFunction converterInstance = Converter({
       "to":  options.to,
       "from": options.from
-    }.jsify());
+    }.jsify()!);
     JSAny? result = converterInstance.callAsFunction(
         null,
         text.toJS
