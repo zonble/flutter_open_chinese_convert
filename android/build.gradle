@@ -47,10 +47,22 @@ android {
 
     defaultConfig {
         minSdk = 24
+        externalNativeBuild {
+            cmake {
+                cppFlags "-DOPENCC_ENABLE_DARTS"
+                arguments "-DANDROID_STL=c++_shared"
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
     }
 
     dependencies {
-        implementation("com.github.qichuan:android-opencc:1.2.0")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.20")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
