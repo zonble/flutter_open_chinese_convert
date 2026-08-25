@@ -10,17 +10,6 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
 
-    lazy var bundle: Bundle? = {
-        let openCCBundle = Bundle(for: ChineseConverter.self)
-        guard
-            let resourceUrl = openCCBundle.url(
-                forResource: "OpenCCDictionary", withExtension: "bundle")
-        else {
-            return nil
-        }
-        return Bundle(url: resourceUrl)
-    }()
-
     func convertOptions(from: String) -> ChineseConverter.Options {
         return switch from {
         case "s2t": [.traditionalize]
@@ -39,13 +28,14 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
         let method = call.method
         switch method {
         case "convert":
-            guard let bundle = self.bundle else {
-                let flutterError = FlutterError(
-                    code: "NO_BUNDLE", message: "The bundle for the plugin does not exist.",
-                    details: nil)
-                result(flutterError)
-                return
-            }
+            // Previously this looked up a bundle named "OpenCCDictionary" via
+            // `Bundle(for: ChineseConverter.self)` before calling `convert`. That
+            // matched CocoaPods' resource_bundle naming, but under Swift Package
+            // Manager the equivalent resource is a differently-named, differently
+            // located bundle (e.g. "SwiftyOpenCC_OpenCC.bundle"), so the lookup
+            // always failed there with a NO_BUNDLE error. It's also unnecessary:
+            // `ChineseConverter(options:)` resolves its own dictionaries via
+            // `Bundle.module` internally, so no bundle needs to be passed in here.
             guard let list = call.arguments as? [Any],
                 list.count >= 3,
                 let text = list[0] as? String,
@@ -59,10 +49,9 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
                 return
             }
             if inBackground {
-                convertInBackground(
-                    text: text, optionString: optionString, bundle: bundle, result: result)
+                convertInBackground(text: text, optionString: optionString, result: result)
             } else {
-                convert(text: text, optionString: optionString, bundle: bundle, result: result)
+                convert(text: text, optionString: optionString, result: result)
             }
         default:
             let flutterError = FlutterError(code: "1", message: "Not supported", details: nil)
@@ -71,7 +60,7 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
     }
 
     func convert(
-        text: String, optionString: String, bundle: Bundle, result: @escaping FlutterResult
+        text: String, optionString: String, result: @escaping FlutterResult
     ) {
         do {
             let options = convertOptions(from: optionString)
@@ -86,7 +75,7 @@ public class FlutterOpenChineseConvertPlugin: NSObject, FlutterPlugin {
     }
 
     func convertInBackground(
-        text: String, optionString: String, bundle: Bundle, result: @escaping FlutterResult
+        text: String, optionString: String, result: @escaping FlutterResult
     ) {
         DispatchQueue.global().async {
             do {
